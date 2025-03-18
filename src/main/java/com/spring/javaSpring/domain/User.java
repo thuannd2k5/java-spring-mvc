@@ -1,26 +1,50 @@
 package com.spring.javaSpring.domain;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
+@Entity
 public class User {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+
     private String email;
     private String password;
     private String phone;
-    private String fullname;
+    private String fullName;
     private String address;
 
     // create constructor
     public User() {
     }
 
-    public User(String email, String password, String phone, String fullname, String address) {
+    public User(String email, String password, String phone, String fullName, String address) {
         this.email = email;
         this.password = password;
         this.phone = phone;
-        this.fullname = fullname;
+        this.fullName = fullName;
         this.address = address;
     }
 
     // getters and setters
+
+    // create to string
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", phone='" + phone + '\'' +
+                ", fullname='" + fullName + '\'' +
+                ", address='" + address + '\'' +
+                '}';
+    }
+
     public long getId() {
         return id;
     }
@@ -53,12 +77,12 @@ public class User {
         this.phone = phone;
     }
 
-    public String getFullname() {
-        return fullname;
+    public String getFullName() {
+        return fullName;
     }
 
-    public void setFullname(String fullname) {
-        this.fullname = fullname;
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
     }
 
     public String getAddress() {
@@ -67,19 +91,6 @@ public class User {
 
     public void setAddress(String address) {
         this.address = address;
-    }
-
-    // create to string
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", email='" + email + '\'' +
-                ", password='" + password + '\'' +
-                ", phone='" + phone + '\'' +
-                ", fullname='" + fullname + '\'' +
-                ", address='" + address + '\'' +
-                '}';
     }
 
 }
