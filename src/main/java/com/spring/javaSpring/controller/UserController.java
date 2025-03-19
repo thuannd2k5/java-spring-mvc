@@ -23,7 +23,7 @@ public class UserController {
 
     @RequestMapping("")
     public String getHomePage(Model model) {
-        List<User> users = this.userService.getAllUsers();
+        List<User> users = this.userService.getAllUsersByEmail("tuan@gmail.com");
         System.out.println(users);
         model.addAttribute("message", "test");
         model.addAttribute("hoidanit", "đây là trang user controller");
