@@ -1,5 +1,7 @@
 package com.spring.javaSpring.controller;
 
+import java.util.List;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,6 +23,8 @@ public class UserController {
 
     @RequestMapping("")
     public String getHomePage(Model model) {
+        List<User> users = this.userService.getAllUsers();
+        System.out.println(users);
         model.addAttribute("message", "test");
         model.addAttribute("hoidanit", "đây là trang user controller");
         return "hello";
