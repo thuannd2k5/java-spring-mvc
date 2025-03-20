@@ -1,4 +1,4 @@
-package com.spring.javaSpring.controller;
+package com.spring.javaSpring.controller.admin;
 
 import java.util.List;
 
@@ -35,14 +35,14 @@ public class UserController {
     public String getUserPage(Model model) {
         List<User> users = this.userService.getAllUsers();
         model.addAttribute("users1", users);
-        return "admin/user/tableUser";
+        return "admin/user/show";
     }
 
     @GetMapping("/admin/user/{id}")
     public String getDetailUser(Model model, @PathVariable long id) {
         User user = this.userService.getUserById(id);
         model.addAttribute("newUser", user);
-        return "admin/user/show";
+        return "admin/user/detail";
     }
 
     @GetMapping("/admin/user/create")

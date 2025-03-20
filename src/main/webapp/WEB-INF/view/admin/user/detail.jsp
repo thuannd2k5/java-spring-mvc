@@ -28,29 +28,24 @@
                                     <li class="breadcrumb-item active">User</li>
                                 </ol>
                                 <div class="container mt-5">
-                                    <div class="row">
-                                        <div class="col-12 mx-auto">
-                                            <h2 class="d-flex justify-content-between">Delete a User with id : ${id}
-                                            </h2>
-                                            <hr>
-                                        </div>
-                                        <div>
-                                            <div class="alert alert-danger" role="alert">
-                                                Are you sure you want to delete this user?
-                                            </div>
-                                        </div>
-                                        <form:form action="/admin/user/delete" method="post" modelAttribute="newUser">
-                                            <div class="mb-3" style="display: none;">
-                                                <label class="form-label">ID</label>
-                                                <form:input type="text" class="form-control" path="id" value="${id}" />
-                                            </div>
-
-                                            <div>
-                                                <button type="submit" class="btn btn-danger">confirm</button>
-                                            </div>
-                                        </form:form>
-
+                                    <div class="d-flex justify-content-between">
+                                        <h2>Detail user with id = ${id}</h2>
                                     </div>
+                                    <hr>
+                                    <div class="card" style="width: 70%;">
+                                        <div class="card-header">
+                                            User Information
+                                        </div>
+                                        <ul class="list-group list-group-flush">
+                                            <li class="list-group-item">ID : ${id}</li>
+                                            <li class="list-group-item">Email : ${newUser.email}</li>
+                                            <li class="list-group-item">FullName : ${newUser.fullName}</li>
+                                            <li class="list-group-item">Phone : ${newUser.phone}</li>
+                                            <li class="list-group-item">Address : ${newUser.address}</li>
+                                        </ul>
+                                    </div>
+                                    <a href="/admin/user" class="btn btn-success">back</a>
+
                                 </div>
                             </div>
                         </main>
