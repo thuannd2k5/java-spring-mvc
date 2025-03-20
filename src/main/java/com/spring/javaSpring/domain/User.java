@@ -1,11 +1,18 @@
 package com.spring.javaSpring.domain;
 
+import java.util.List;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 
 @Entity
+@Table(name = "users")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -13,35 +20,24 @@ public class User {
 
     private String email;
     private String password;
-    private String phone;
     private String fullName;
     private String address;
+    private String phone;
+
+    private String avatar;
+
+    // roleID
+    // user many -> to one -> role
+    @ManyToOne
+    @JoinColumn(name = "role_id")
+    private Role role;
+
+    // user one -> to many -> order
+    @OneToMany(mappedBy = "user")
+    private List<Order> order;
 
     // create constructor
     public User() {
-    }
-
-    public User(String email, String password, String phone, String fullName, String address) {
-        this.email = email;
-        this.password = password;
-        this.phone = phone;
-        this.fullName = fullName;
-        this.address = address;
-    }
-
-    // getters and setters
-
-    // create to string
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", email='" + email + '\'' +
-                ", password='" + password + '\'' +
-                ", phone='" + phone + '\'' +
-                ", fullname='" + fullName + '\'' +
-                ", address='" + address + '\'' +
-                '}';
     }
 
     public long getId() {
@@ -68,14 +64,6 @@ public class User {
         this.password = password;
     }
 
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
     public String getFullName() {
         return fullName;
     }
@@ -90,6 +78,28 @@ public class User {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
+    }
+
+    @Override
+    public String toString() {
+        return "User [id=" + id + ", email=" + email + ", password=" + password + ", fullName=" + fullName
+                + ", address=" + address + ", phone=" + phone + ", avatar=" + avatar + "]";
     }
 
 }
