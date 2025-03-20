@@ -20,6 +20,10 @@ public class UserService {
         return this.userRepository.findByEmail(email);
     }
 
+    public User getUserById(long id) {
+        return this.userRepository.findById(id);
+    }
+
     public UserService(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
@@ -28,5 +32,9 @@ public class UserService {
         User eric = this.userRepository.save(user);
         System.out.println(eric);
         return eric;
+    }
+
+    public void deleteUserById(long id) {
+        this.userRepository.deleteById(id);
     }
 }

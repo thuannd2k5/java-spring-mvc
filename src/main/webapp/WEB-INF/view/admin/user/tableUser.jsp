@@ -21,7 +21,7 @@
                 <div class="container mt-5">
                     <div class="d-flex justify-content-between">
                         <h2>Table User</h2>
-                        <button type="button" class="btn btn-primary">create a users</button>
+                        <a href="/admin/user/create" class="btn btn-primary">Create a User</a>
                     </div>
                     <hr>
                     <table class="table table-container table-hover table-bordered">
@@ -34,36 +34,18 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>
-                                    <button type="button" class="btn btn-success">view</button>
-                                    <button type="button" class="btn btn-warning">update</button>
-                                    <button type="button" class="btn btn-danger">delete</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">2</th>
-                                <td>Jacob</td>
-                                <td>Thornton</td>
-                                <td>
-                                    <button type="button" class="btn btn-success">view</button>
-                                    <button type="button" class="btn btn-warning">update</button>
-                                    <button type="button" class="btn btn-danger">delete</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">3</th>
-                                <td>Jacob</td>
-                                <td>Thornton</td>
-                                <td>
-                                    <button type="button" class="btn btn-success">view</button>
-                                    <button type="button" class="btn btn-warning">update</button>
-                                    <button type="button" class="btn btn-danger">delete</button>
-                                </td>
-                            </tr>
+                            <c:forEach var="user" items="${users1}">
+                                <tr>
+                                    <th scope="row">${user.id}</th>
+                                    <td>${user.email}</td>
+                                    <td>${user.fullName}</td>
+                                    <td>
+                                        <a href="/admin/user/${user.id}" class="btn btn-success">view</a>
+                                        <a href="/admin/user/update/${user.id}" class="btn btn-warning">update</a>
+                                        <a href="/admin/user/delete/${user.id}" class="btn btn-danger">delete</a>
+                                    </td>
+                                </tr>
+                            </c:forEach>
                         </tbody>
                     </table>
                 </div>
