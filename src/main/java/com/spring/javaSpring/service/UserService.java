@@ -3,6 +3,7 @@ package com.spring.javaSpring.service;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.spring.javaSpring.domain.User;
 import com.spring.javaSpring.repository.UserRepository;
@@ -36,5 +37,10 @@ public class UserService {
 
     public void deleteUserById(long id) {
         this.userRepository.deleteById(id);
+    }
+
+    public void handleSaveUploadFile(MultipartFile file, String string) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'handleSaveUploadFile'");
     }
 }

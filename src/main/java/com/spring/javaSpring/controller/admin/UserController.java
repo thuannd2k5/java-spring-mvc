@@ -9,17 +9,22 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.spring.javaSpring.domain.User;
+import com.spring.javaSpring.service.UploadService;
 import com.spring.javaSpring.service.UserService;
 
 @Controller
 public class UserController {
 
     private final UserService userService;
+    private final UploadService uploadService;
 
-    public UserController(UserService userService) {
+    public UserController(UserService userService, UploadService uploadService) {
         this.userService = userService;
+        this.uploadService = uploadService;
     }
 
     @RequestMapping("")
@@ -52,8 +57,11 @@ public class UserController {
     }
 
     @PostMapping("/admin/user/create")
-    public String createUserPage(Model model, @ModelAttribute("newUser") User thuan) {
-        this.userService.handleUserSave(thuan);
+    public String createUserPage(Model model,
+            @ModelAttribute("newUser") User thuan,
+            @RequestParam("hoidanitFile") MultipartFile file) {
+        this.uploadService.handleSaveUploadFile(file, "avatar");
+        // this.userService.handleUserSave(thuan);
         return "redirect:/admin/user";
     }
 
